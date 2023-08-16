@@ -86,6 +86,16 @@ orgs.newOrg('eclipse-xpanse') {
       description: "Repository to host all IAM configurations for xpanse.",
       homepage: "",
       web_commit_signoff_required: false,
+      branch_protection_rules: [
+        orgs.newBranchProtectionRule('main') {
+            bypass_pull_request_allowances+: [
+                    "@eclipse-xpanse-bot"
+                ],
+                required_approving_review_count: 1,
+                requires_status_checks: false,
+                requires_strict_status_checks: true,
+              },
+            ],
     },
     orgs.newRepo('xpanse-relops') {
       allow_update_branch: false,
