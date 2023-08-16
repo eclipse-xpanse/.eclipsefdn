@@ -71,9 +71,6 @@ orgs.newOrg('eclipse-xpanse') {
         orgs.newRepoSecret('GIST_TOKEN') {
           value: "pass:bots/technology.xpanse/github.com/gist-token-3285",
         },
-        orgs.newRepoSecret('MY_GITHUB_TOKEN') {
-          value: "********",
-        },
       ],
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
