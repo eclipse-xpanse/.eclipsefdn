@@ -15,22 +15,22 @@ orgs.newOrg('eclipse-xpanse') {
   },
   secrets+: [
     orgs.newOrgSecret('BOT_GITHUB_DOCKER_TOKEN') {
-      value: "********",
+      value: "pass:bots/technology.xpanse/github.com/api-token-3388",
     },
     orgs.newOrgSecret('ORG_GPG_PASSPHRASE') {
-      value: "********",
+      value: "pass:bots/technology.xpanse/gpg/passphrase",
     },
     orgs.newOrgSecret('ORG_GPG_PRIVATE_KEY') {
-      value: "********",
+      value: "pass:bots/technology.xpanse/gpg/secret-subkeys.asc",
     },
     orgs.newOrgSecret('ORG_GPG_PUBLIC_KEY') {
-      value: "********",
+      value: "pass:bots/technology.xpanse/gpg/public-keys.asc",
     },
     orgs.newOrgSecret('ORG_OSSRH_PASSWORD') {
-      value: "********",
+      value: "pass:bots/technology.xpanse/oss.sonatype.org/password",
     },
     orgs.newOrgSecret('ORG_OSSRH_USERNAME') {
-      value: "********",
+      value: "pass:bots/technology.xpanse/oss.sonatype.org/username",
     },
   ],
   _repositories+:: [
@@ -39,6 +39,11 @@ orgs.newOrg('eclipse-xpanse') {
       description: "RESTful APIs for executing Terraform commands. ",
       homepage: "",
       web_commit_signoff_required: false,
+      secrets: [
+        orgs.newRepoSecret('BOT_GITHUB_TOKEN') {
+          value: "pass:bots/technology.xpanse/github.com/api-token-3208",
+        },
+      ],
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
           required_approving_review_count: 1,
@@ -61,10 +66,10 @@ orgs.newOrg('eclipse-xpanse') {
       web_commit_signoff_required: false,
       secrets: [
         orgs.newRepoSecret('BOT_GITHUB_TOKEN') {
-          value: "********",
+          value: "pass:bots/technology.xpanse/github.com/api-token-3208",
         },
         orgs.newRepoSecret('GIST_TOKEN') {
-          value: "********",
+          value: "pass:bots/technology.xpanse/github.com/gist-token-3285",
         },
         orgs.newRepoSecret('MY_GITHUB_TOKEN') {
           value: "********",
