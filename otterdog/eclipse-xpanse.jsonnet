@@ -10,6 +10,9 @@ orgs.newOrg('eclipse-xpanse') {
     readers_can_create_discussions: true,
     two_factor_requirement: false,
     web_commit_signoff_required: false,
+    workflows+: {
+      actions_can_approve_pull_request_reviews: false,
+    },
   },
   secrets+: [
     orgs.newOrgSecret('BOT_GITHUB_DOCKER_TOKEN') {
@@ -88,12 +91,12 @@ orgs.newOrg('eclipse-xpanse') {
       web_commit_signoff_required: false,
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
-            bypass_pull_request_allowances+: [
-                "@eclipse-xpanse-bot"
-            ],
-            required_approving_review_count: 1,
-            requires_status_checks: false,
-            requires_strict_status_checks: true,
+          bypass_pull_request_allowances+: [
+            "@eclipse-xpanse-bot"
+          ],
+          required_approving_review_count: 1,
+          requires_status_checks: false,
+          requires_strict_status_checks: true,
         },
       ],
     },
@@ -128,7 +131,7 @@ orgs.newOrg('eclipse-xpanse') {
     },
     orgs.newRepo('xpanse-website') {
       allow_update_branch: false,
-      description: "Sourcecode for Eclipse Xpanse project website. Website is hosted using Github pages.",
+      description: "Sourcecode for Eclipse Xpanse project website. Website is hosted on Eclipse Foundation's infrastructure.",
       gh_pages_build_type: "workflow",
       homepage: "",
       web_commit_signoff_required: false,
