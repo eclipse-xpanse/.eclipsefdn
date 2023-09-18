@@ -152,17 +152,30 @@ orgs.newOrg('eclipse-xpanse') {
       ],
     },
     orgs.newRepo('policy-man') {
-          allow_update_branch: false,
-          description: "OPA based policy engine.",
-          homepage: "",
-          web_commit_signoff_required: false,
-          branch_protection_rules: [
-            orgs.newBranchProtectionRule('main') {
-              required_approving_review_count: 1,
-              requires_status_checks: false,
-              requires_strict_status_checks: true,
-            },
-          ],
-        }
+      allow_update_branch: false,
+      description: "OPA based policy engine.",
+      homepage: "",
+      web_commit_signoff_required: false,
+      branch_protection_rules: [
+        orgs.newBranchProtectionRule('main') {
+           required_approving_review_count: 1,
+           requires_status_checks: false,
+           requires_strict_status_checks: true,
+        },
+      ],
+    },
+    orgs.newRepo('.github') {
+      allow_update_branch: false,
+      description: "Repo to maintain organization home page content.",
+      homepage: "",
+      web_commit_signoff_required: false,
+      branch_protection_rules: [
+        orgs.newBranchProtectionRule('main') {
+           required_approving_review_count: 1,
+           requires_status_checks: false,
+           requires_strict_status_checks: true,
+        },
+      ],
+    },
   ],
 }
