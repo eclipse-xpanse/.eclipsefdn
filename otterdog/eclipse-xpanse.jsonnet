@@ -2,6 +2,7 @@ local orgs = import 'vendor/otterdog-defaults/otterdog-defaults.libsonnet';
 
 orgs.newOrg('eclipse-xpanse') {
   settings+: {
+    blog: "https://eclipse.dev/xpanse",
     default_repository_permission: "none",
     dependabot_security_updates_enabled_for_new_repositories: false,
     description: "Xpanse enables the development of native cloud managed services designed to be fully portable across cloud implementations, for an  open and fair cloud market.",
@@ -10,7 +11,6 @@ orgs.newOrg('eclipse-xpanse') {
     readers_can_create_discussions: true,
     two_factor_requirement: false,
     web_commit_signoff_required: false,
-    blog: "https://eclipse.dev/xpanse",
     workflows+: {
       actions_can_approve_pull_request_reviews: false,
     },
@@ -36,10 +36,47 @@ orgs.newOrg('eclipse-xpanse') {
     },
   ],
   _repositories+:: [
-    orgs.newRepo('terraform-boot') {
+    orgs.newRepo('.github') {
+      allow_merge_commit: true,
       allow_update_branch: false,
+      delete_branch_on_merge: false,
+      description: "Repo to maintain organization home page content.",
+      homepage: "",
+      web_commit_signoff_required: false,
+      branch_protection_rules: [
+        orgs.newBranchProtectionRule('main') {
+          required_approving_review_count: 1,
+          requires_status_checks: false,
+          requires_strict_status_checks: true,
+        },
+      ],
+    },
+    orgs.newRepo('policy-man') {
+      allow_merge_commit: true,
+      allow_update_branch: false,
+      delete_branch_on_merge: false,
+      description: "OPA based policy engine.",
+      homepage: "",
+      web_commit_signoff_required: false,
+      branch_protection_rules: [
+        orgs.newBranchProtectionRule('main') {
+          required_approving_review_count: 1,
+          requires_status_checks: false,
+          requires_strict_status_checks: true,
+        },
+      ],
+    },
+    orgs.newRepo('terraform-boot') {
+      allow_merge_commit: true,
+      allow_update_branch: false,
+      delete_branch_on_merge: false,
       description: "RESTful APIs for executing Terraform commands. ",
       homepage: "",
+      topics+: [
+        "rest-api",
+        "spring-boot",
+        "terraform"
+      ],
       web_commit_signoff_required: false,
       secrets: [
         orgs.newRepoSecret('BOT_GITHUB_TOKEN') {
@@ -55,15 +92,19 @@ orgs.newOrg('eclipse-xpanse') {
       ],
     },
     orgs.newRepo('xpanse') {
+      allow_merge_commit: true,
       allow_update_branch: false,
+      delete_branch_on_merge: false,
       description: "Xpanse is here to make native cloud services configurable and portable.",
       has_discussions: true,
       homepage: "https://eclipse.dev/xpanse/",
       topics+: [
         "cloud",
+        "containers",
         "openapi",
         "rest-api",
-        "saas"
+        "saas",
+        "spring-boot"
       ],
       web_commit_signoff_required: false,
       secrets: [
@@ -86,7 +127,9 @@ orgs.newOrg('eclipse-xpanse') {
       ],
     },
     orgs.newRepo('xpanse-iam') {
+      allow_merge_commit: true,
       allow_update_branch: false,
+      delete_branch_on_merge: false,
       description: "Repository to host all IAM configurations for xpanse.",
       homepage: "",
       web_commit_signoff_required: false,
@@ -102,7 +145,9 @@ orgs.newOrg('eclipse-xpanse') {
       ],
     },
     orgs.newRepo('xpanse-relops') {
+      allow_merge_commit: true,
       allow_update_branch: false,
+      delete_branch_on_merge: false,
       description: "Release operations related material and artifacts such as SBOMs, release notes, test plans and reports, and other documentation.",
       homepage: "",
       web_commit_signoff_required: false,
@@ -118,9 +163,17 @@ orgs.newOrg('eclipse-xpanse') {
       ],
     },
     orgs.newRepo('xpanse-ui') {
+      allow_merge_commit: true,
       allow_update_branch: false,
+      delete_branch_on_merge: false,
       description: "ReactJS based UI for Eclipse Xpanse project.",
       homepage: "",
+      topics+: [
+        "antd-design",
+        "reactjs",
+        "typescript",
+        "ui"
+      ],
       web_commit_signoff_required: false,
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
@@ -131,10 +184,17 @@ orgs.newOrg('eclipse-xpanse') {
       ],
     },
     orgs.newRepo('xpanse-website') {
+      allow_merge_commit: true,
       allow_update_branch: false,
+      delete_branch_on_merge: false,
       description: "Sourcecode for Eclipse Xpanse project website. Website is hosted on Eclipse Foundation's infrastructure.",
       gh_pages_build_type: "workflow",
       homepage: "",
+      topics+: [
+        "docusaurus",
+        "typescript",
+        "website-development"
+      ],
       web_commit_signoff_required: false,
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
@@ -149,32 +209,6 @@ orgs.newOrg('eclipse-xpanse') {
             "main"
           ],
           deployment_branch_policy: "selected",
-        },
-      ],
-    },
-    orgs.newRepo('policy-man') {
-      allow_update_branch: false,
-      description: "OPA based policy engine.",
-      homepage: "",
-      web_commit_signoff_required: false,
-      branch_protection_rules: [
-        orgs.newBranchProtectionRule('main') {
-           required_approving_review_count: 1,
-           requires_status_checks: false,
-           requires_strict_status_checks: true,
-        },
-      ],
-    },
-    orgs.newRepo('.github') {
-      allow_update_branch: false,
-      description: "Repo to maintain organization home page content.",
-      homepage: "",
-      web_commit_signoff_required: false,
-      branch_protection_rules: [
-        orgs.newBranchProtectionRule('main') {
-           required_approving_review_count: 1,
-           requires_status_checks: false,
-           requires_strict_status_checks: true,
         },
       ],
     },
