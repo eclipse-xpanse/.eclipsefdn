@@ -175,6 +175,11 @@ orgs.newOrg('eclipse-xpanse') {
         "ui"
       ],
       web_commit_signoff_required: false,
+      secrets: [
+        orgs.newRepoSecret('BOT_GITHUB_TOKEN') {
+          value: "pass:bots/technology.xpanse/github.com/api-token-3208",
+        },
+      ],
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
           required_approving_review_count: 1,
