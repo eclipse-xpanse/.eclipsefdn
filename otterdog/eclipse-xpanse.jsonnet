@@ -188,7 +188,7 @@ orgs.newOrg('eclipse-xpanse') {
           bypass_pull_request_allowances+: [
             "@eclipse-xpanse-bot"
           ],
-          required_approving_review_count: 0,
+          required_approving_review_count: 1,
           requires_status_checks: false,
           requires_strict_status_checks: true,
         },
