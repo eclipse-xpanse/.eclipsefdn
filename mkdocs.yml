@@ -1,6 +1,6 @@
 site_name: Otterdog configuration @ eclipse-xpanse
 site_description: Otterdog configuration @ eclipse-xpanse
-strict: true
+strict: false
 
 site_url: https://eclipse-xpanse.github.io/.eclipsefdn/
 
