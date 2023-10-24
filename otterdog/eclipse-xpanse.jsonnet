@@ -3,7 +3,6 @@ local orgs = import 'vendor/otterdog-defaults/otterdog-defaults.libsonnet';
 orgs.newOrg('eclipse-xpanse') {
   settings+: {
     blog: "https://eclipse.dev/xpanse",
-    default_repository_permission: "none",
     dependabot_security_updates_enabled_for_new_repositories: false,
     description: "Xpanse enables the development of native cloud managed services designed to be fully portable across cloud implementations, for an  open and fair cloud market.",
     name: "Eclipse Xpanse",
@@ -43,6 +42,9 @@ orgs.newOrg('eclipse-xpanse') {
       description: "Repo to maintain organization home page content.",
       homepage: "",
       web_commit_signoff_required: false,
+      workflows+: {
+        actions_can_approve_pull_request_reviews: false,
+      },
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
           required_approving_review_count: 1,
@@ -58,6 +60,9 @@ orgs.newOrg('eclipse-xpanse') {
       description: "OPA based policy engine.",
       homepage: "",
       web_commit_signoff_required: false,
+      workflows+: {
+        actions_can_approve_pull_request_reviews: false,
+      },
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
           required_approving_review_count: 1,
@@ -78,6 +83,9 @@ orgs.newOrg('eclipse-xpanse') {
         "terraform"
       ],
       web_commit_signoff_required: false,
+      workflows+: {
+        actions_can_approve_pull_request_reviews: false,
+      },
       secrets: [
         orgs.newRepoSecret('BOT_GITHUB_TOKEN') {
           value: "pass:bots/technology.xpanse/github.com/api-token-3208",
@@ -98,7 +106,7 @@ orgs.newOrg('eclipse-xpanse') {
       allow_merge_commit: true,
       allow_update_branch: false,
       delete_branch_on_merge: false,
-      description: "Xpanse is here to make native cloud services configurable and portable.",
+      description: "xpanse is here to make native cloud services configurable and portable.",
       has_discussions: true,
       homepage: "https://eclipse.dev/xpanse/",
       topics+: [
@@ -110,6 +118,9 @@ orgs.newOrg('eclipse-xpanse') {
         "spring-boot"
       ],
       web_commit_signoff_required: false,
+      workflows+: {
+        actions_can_approve_pull_request_reviews: false,
+      },
       secrets: [
         orgs.newRepoSecret('BOT_GITHUB_TOKEN') {
           value: "pass:bots/technology.xpanse/github.com/api-token-3208",
@@ -136,6 +147,9 @@ orgs.newOrg('eclipse-xpanse') {
       description: "Repository to host all IAM configurations for xpanse.",
       homepage: "",
       web_commit_signoff_required: false,
+      workflows+: {
+        actions_can_approve_pull_request_reviews: false,
+      },
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
           bypass_pull_request_allowances+: [
@@ -154,6 +168,9 @@ orgs.newOrg('eclipse-xpanse') {
       description: "Release operations related material and artifacts such as SBOMs, release notes, test plans and reports, and other documentation.",
       homepage: "",
       web_commit_signoff_required: false,
+      workflows+: {
+        actions_can_approve_pull_request_reviews: false,
+      },
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
           bypass_pull_request_allowances+: [
@@ -178,6 +195,9 @@ orgs.newOrg('eclipse-xpanse') {
         "ui"
       ],
       web_commit_signoff_required: false,
+      workflows+: {
+        actions_can_approve_pull_request_reviews: false,
+      },
       secrets: [
         orgs.newRepoSecret('BOT_GITHUB_TOKEN') {
           value: "pass:bots/technology.xpanse/github.com/api-token-3208",
@@ -207,6 +227,9 @@ orgs.newOrg('eclipse-xpanse') {
         "website-development"
       ],
       web_commit_signoff_required: false,
+      workflows+: {
+        actions_can_approve_pull_request_reviews: false,
+      },
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
           required_approving_review_count: 1,
