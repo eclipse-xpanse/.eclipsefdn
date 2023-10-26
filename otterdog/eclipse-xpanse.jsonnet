@@ -70,9 +70,9 @@ orgs.newOrg('eclipse-xpanse') {
       ],
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
-        bypass_pull_request_allowances+: [
-          "@eclipse-xpanse-bot"
-        ],
+          bypass_pull_request_allowances+: [
+            "@eclipse-xpanse-bot"
+          ],
           required_approving_review_count: 1,
           requires_status_checks: false,
           requires_strict_status_checks: true,
