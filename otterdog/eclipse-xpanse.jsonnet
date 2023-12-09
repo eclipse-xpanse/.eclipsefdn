@@ -59,13 +59,17 @@ orgs.newOrg('eclipse-xpanse') {
       delete_branch_on_merge: false,
       description: "OPA based policy engine.",
       homepage: "",
+      topics+: [
+        "opa",
+        "restful"
+      ],
       web_commit_signoff_required: false,
       workflows+: {
         actions_can_approve_pull_request_reviews: false,
       },
       secrets: [
         orgs.newRepoSecret('BOT_GITHUB_TOKEN') {
-         value: "pass:bots/technology.xpanse/github.com/api-token-3208",
+          value: "pass:bots/technology.xpanse/github.com/api-token-3208",
         },
       ],
       branch_protection_rules: [
@@ -169,12 +173,38 @@ orgs.newOrg('eclipse-xpanse') {
         },
       ],
     },
+    orgs.newRepo('xpanse-observability') {
+      allow_merge_commit: true,
+      allow_update_branch: false,
+      delete_branch_on_merge: false,
+      description: "xpanse observability and traceability related configuration.",
+      homepage: "",
+      web_commit_signoff_required: false,
+      workflows+: {
+        actions_can_approve_pull_request_reviews: false,
+      },
+      branch_protection_rules: [
+        orgs.newBranchProtectionRule('main') {
+          bypass_pull_request_allowances+: [
+            "@eclipse-xpanse-bot"
+          ],
+          required_approving_review_count: 1,
+          requires_status_checks: false,
+          requires_strict_status_checks: true,
+        },
+      ],
+    },
     orgs.newRepo('xpanse-relops') {
       allow_merge_commit: true,
       allow_update_branch: false,
       delete_branch_on_merge: false,
       description: "Release operations related material and artifacts such as SBOMs, release notes, test plans and reports, and other documentation.",
       homepage: "",
+      topics+: [
+        "devops",
+        "documentation",
+        "tests"
+      ],
       web_commit_signoff_required: false,
       workflows+: {
         actions_can_approve_pull_request_reviews: false,
@@ -251,27 +281,6 @@ orgs.newOrg('eclipse-xpanse') {
             "main"
           ],
           deployment_branch_policy: "selected",
-        },
-      ],
-    },
-    orgs.newRepo('xpanse-observability') {
-      allow_merge_commit: true,
-      allow_update_branch: false,
-      delete_branch_on_merge: false,
-      description: "xpanse observability and traceability related configuration.",
-      homepage: "",
-      web_commit_signoff_required: false,
-      workflows+: {
-        actions_can_approve_pull_request_reviews: false,
-      },
-      branch_protection_rules: [
-        orgs.newBranchProtectionRule('main') {
-          bypass_pull_request_allowances+: [
-            "@eclipse-xpanse-bot"
-          ],
-          required_approving_review_count: 1,
-          requires_status_checks: false,
-          requires_strict_status_checks: true,
         },
       ],
     },
