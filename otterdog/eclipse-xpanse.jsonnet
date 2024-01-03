@@ -33,6 +33,12 @@ orgs.newOrg('eclipse-xpanse') {
     orgs.newOrgSecret('ORG_OSSRH_USERNAME') {
       value: "pass:bots/technology.xpanse/oss.sonatype.org/username",
     },
+    orgs.newOrgSecret('SWAGGERHUB_API_KEY') {
+      value: "pass:bots/technology.xpanse/swaggerhub.com/api-key",
+    },
+    orgs.newOrgSecret('SWAGGERHUB_USER') {
+      value: "pass:bots/technology.xpanse/swaggerhub.com/username",
+    },
   ],
   _repositories+:: [
     orgs.newRepo('.github') {
