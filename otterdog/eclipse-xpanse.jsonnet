@@ -290,5 +290,36 @@ orgs.newOrg('eclipse-xpanse') {
         },
       ],
     },
+    orgs.newRepo('tofu-maker') {
+      allow_merge_commit: true,
+      allow_update_branch: false,
+      delete_branch_on_merge: false,
+      description: "RESTful APIs for executing open-tofu commands.",
+      homepage: "",
+      topics+: [
+        "rest-api",
+        "spring-boot",
+        "opentofu"
+      ],
+      web_commit_signoff_required: false,
+      workflows+: {
+        actions_can_approve_pull_request_reviews: false,
+      },
+      secrets: [
+        orgs.newRepoSecret('BOT_GITHUB_TOKEN') {
+          value: "pass:bots/technology.xpanse/github.com/api-token-3208",
+        },
+      ],
+      branch_protection_rules: [
+        orgs.newBranchProtectionRule('main') {
+          bypass_pull_request_allowances+: [
+            "@eclipse-xpanse-bot"
+          ],
+          required_approving_review_count: 1,
+          requires_status_checks: false,
+          requires_strict_status_checks: true,
+        },
+      ],
+    },
   ],
 }
