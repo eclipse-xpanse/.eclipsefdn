@@ -7,7 +7,6 @@ orgs.newOrg('eclipse-xpanse') {
     description: "Xpanse enables the development of native cloud managed services designed to be fully portable across cloud implementations, for an  open and fair cloud market.",
     name: "Eclipse Xpanse",
     packages_containers_internal: false,
-    readers_can_create_discussions: true,
     two_factor_requirement: false,
     web_commit_signoff_required: false,
     workflows+: {
