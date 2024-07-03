@@ -288,5 +288,32 @@ orgs.newOrg('eclipse-xpanse') {
         },
       ],
     },
+    orgs.newRepo('xpanse-agent') {
+      allow_merge_commit: true,
+      allow_update_branch: false,
+      delete_branch_on_merge: true,
+      description: "xpanse agent to poll and execute config change requests.",
+      homepage: "",
+      topics+: [
+        "polling",
+        "pull-agent"
+      ],
+      web_commit_signoff_required: false,
+      secrets: [
+        orgs.newRepoSecret('BOT_GITHUB_TOKEN') {
+          value: "pass:bots/technology.xpanse/github.com/api-token-3208",
+        },
+      ],
+      branch_protection_rules: [
+        orgs.newBranchProtectionRule('main') {
+          bypass_pull_request_allowances+: [
+            "@eclipse-xpanse-bot"
+          ],
+          required_approving_review_count: 0,
+          requires_status_checks: false,
+          requires_strict_status_checks: true,
+        },
+      ],
+    }
   ],
 }
