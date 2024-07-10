@@ -25,10 +25,10 @@ orgs.newOrg('eclipse-xpanse') {
       value: "pass:bots/technology.xpanse/gpg/public-keys.asc",
     },
     orgs.newOrgSecret('ORG_OSSRH_PASSWORD') {
-      value: "pass:bots/technology.xpanse/oss.sonatype.org/password",
+      value: "pass:bots/technology.xpanse/oss.sonatype.org/gh-token-password",
     },
     orgs.newOrgSecret('ORG_OSSRH_USERNAME') {
-      value: "pass:bots/technology.xpanse/oss.sonatype.org/username",
+      value: "pass:bots/technology.xpanse/oss.sonatype.org/gh-token-username",
     },
     orgs.newOrgSecret('SWAGGERHUB_API_KEY') {
       value: "pass:bots/technology.xpanse/swaggerhub.com/api-key",
