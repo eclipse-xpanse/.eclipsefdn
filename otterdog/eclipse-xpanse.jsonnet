@@ -323,6 +323,7 @@ orgs.newOrg('eclipse-xpanse') {
       homepage: "",
       topics+: [
         "examples",
+        "services",
       ],
       web_commit_signoff_required: false,
       secrets: [
