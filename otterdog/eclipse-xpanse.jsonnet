@@ -140,7 +140,7 @@ orgs.newOrg('eclipse-xpanse') {
       allow_merge_commit: true,
       allow_update_branch: false,
       delete_branch_on_merge: false,
-      description: "xpanse is here to make native managed cloud services configurable and portable.",
+      description: "Enabling configurable and portable native managed cloud services for 3rd party providers",
       has_discussions: true,
       homepage: "https://eclipse.dev/xpanse/",
       topics+: [
