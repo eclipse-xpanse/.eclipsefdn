@@ -1,6 +1,6 @@
 local orgs = import 'vendor/otterdog-defaults/otterdog-defaults.libsonnet';
 
-orgs.newOrg('eclipse-xpanse') {
+orgs.newOrg('technology.xpanse', 'eclipse-xpanse') {
   settings+: {
     blog: "https://eclipse.dev/xpanse",
     description: "Xpanse enables the development of native cloud managed services designed to be fully portable across cloud implementations, for an  open and fair cloud market.",
