@@ -171,12 +171,43 @@ orgs.newOrg('technology.xpanse', 'eclipse-xpanse') {
         },
       ],
     },
+    orgs.newRepo('xpanse-agent') {
+      allow_merge_commit: true,
+      allow_update_branch: false,
+      description: "xpanse agent to poll and execute config change requests.",
+      homepage: "",
+      topics+: [
+        "polling",
+        "pull-agent"
+      ],
+      web_commit_signoff_required: false,
+      secrets: [
+        orgs.newRepoSecret('BOT_GITHUB_TOKEN') {
+          value: "pass:bots/technology.xpanse/github.com/api-token-3208",
+        },
+      ],
+      branch_protection_rules: [
+        orgs.newBranchProtectionRule('main') {
+          bypass_pull_request_allowances+: [
+            "@eclipse-xpanse-bot"
+          ],
+          required_approving_review_count: 0,
+          requires_status_checks: false,
+          requires_strict_status_checks: true,
+        },
+      ],
+    },
     orgs.newRepo('xpanse-iam') {
       allow_merge_commit: true,
       allow_update_branch: false,
       delete_branch_on_merge: false,
       description: "Repository to host all IAM configurations for xpanse.",
       homepage: "",
+      topics+: [
+        "authentication",
+        "authorization",
+        "iam"
+      ],
       web_commit_signoff_required: false,
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
@@ -195,6 +226,10 @@ orgs.newOrg('technology.xpanse', 'eclipse-xpanse') {
       delete_branch_on_merge: false,
       description: "xpanse observability and traceability related configuration.",
       homepage: "",
+      topics+: [
+        "observability",
+        "opentelemetry"
+      ],
       web_commit_signoff_required: false,
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
@@ -219,6 +254,32 @@ orgs.newOrg('technology.xpanse', 'eclipse-xpanse') {
         "tests"
       ],
       web_commit_signoff_required: false,
+      branch_protection_rules: [
+        orgs.newBranchProtectionRule('main') {
+          bypass_pull_request_allowances+: [
+            "@eclipse-xpanse-bot"
+          ],
+          required_approving_review_count: 1,
+          requires_status_checks: false,
+          requires_strict_status_checks: true,
+        },
+      ],
+    },
+    orgs.newRepo('xpanse-samples') {
+      allow_merge_commit: true,
+      allow_update_branch: false,
+      description: "Repository to host all working samples of services",
+      homepage: "",
+      topics+: [
+        "examples",
+        "services"
+      ],
+      web_commit_signoff_required: false,
+      secrets: [
+        orgs.newRepoSecret('BOT_GITHUB_TOKEN') {
+          value: "pass:bots/technology.xpanse/github.com/api-token-3208",
+        },
+      ],
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
           bypass_pull_request_allowances+: [
@@ -288,59 +349,5 @@ orgs.newOrg('technology.xpanse', 'eclipse-xpanse') {
         },
       ],
     },
-    orgs.newRepo('xpanse-agent') {
-      allow_merge_commit: true,
-      allow_update_branch: false,
-      delete_branch_on_merge: true,
-      description: "xpanse agent to poll and execute config change requests.",
-      homepage: "",
-      topics+: [
-        "polling",
-        "pull-agent"
-      ],
-      web_commit_signoff_required: false,
-      secrets: [
-        orgs.newRepoSecret('BOT_GITHUB_TOKEN') {
-          value: "pass:bots/technology.xpanse/github.com/api-token-3208",
-        },
-      ],
-      branch_protection_rules: [
-        orgs.newBranchProtectionRule('main') {
-          bypass_pull_request_allowances+: [
-            "@eclipse-xpanse-bot"
-          ],
-          required_approving_review_count: 0,
-          requires_status_checks: false,
-          requires_strict_status_checks: true,
-        },
-      ],
-    },
-    orgs.newRepo('xpanse-samples') {
-      allow_merge_commit: true,
-      allow_update_branch: false,
-      delete_branch_on_merge: true,
-      description: "Repository to host all working samples of services",
-      homepage: "",
-      topics+: [
-        "examples",
-        "services",
-      ],
-      web_commit_signoff_required: false,
-      secrets: [
-        orgs.newRepoSecret('BOT_GITHUB_TOKEN') {
-          value: "pass:bots/technology.xpanse/github.com/api-token-3208",
-        },
-      ],
-      branch_protection_rules: [
-        orgs.newBranchProtectionRule('main') {
-          bypass_pull_request_allowances+: [
-            "@eclipse-xpanse-bot"
-          ],
-          required_approving_review_count: 1,
-          requires_status_checks: false,
-          requires_strict_status_checks: true,
-        },
-      ],
-    }
   ],
 }
