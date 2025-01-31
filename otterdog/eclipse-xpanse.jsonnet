@@ -335,7 +335,7 @@ orgs.newOrg('technology.xpanse', 'eclipse-xpanse') {
       web_commit_signoff_required: false,
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
-          required_approving_review_count: 1,
+          required_approving_review_count: 0,
           requires_status_checks: false,
           requires_strict_status_checks: true,
         },
