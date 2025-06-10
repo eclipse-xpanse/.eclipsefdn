@@ -24,11 +24,11 @@ orgs.newOrg('technology.xpanse', 'eclipse-xpanse') {
     orgs.newOrgSecret('ORG_GPG_PUBLIC_KEY') {
       value: "pass:bots/technology.xpanse/gpg/public-keys.asc",
     },
-    orgs.newOrgSecret('ORG_OSSRH_PASSWORD') {
-      value: "pass:bots/technology.xpanse/oss.sonatype.org/gh-token-password",
+    orgs.newOrgSecret('CENTRAL_SONATYPE_TOKEN_PASSWORD') {
+      value: "pass:bots/technology.xpanse/central.sonatype.org/token-password",
     },
-    orgs.newOrgSecret('ORG_OSSRH_USERNAME') {
-      value: "pass:bots/technology.xpanse/oss.sonatype.org/gh-token-username",
+    orgs.newOrgSecret('CENTRAL_SONATYPE_TOKEN_USERNAME') {
+      value: "pass:bots/technology.xpanse/central.sonatype.org/token-username",
     },
     orgs.newOrgSecret('SWAGGERHUB_API_KEY') {
       value: "pass:bots/technology.xpanse/swaggerhub.com/api-key",
